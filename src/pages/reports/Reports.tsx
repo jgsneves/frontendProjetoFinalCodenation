@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import './Reports.css';
 import HeaderComponent from './../../components/header/Header';
 import FooterComponent from './../../components/footer/Footer';
 
 const Reports = () => {
+    const [searchInput, setSearchInput] = useState("");
 
-    function handleOnChange() {
-        //
+    function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
+        const inputText = event.target.value;
+        setSearchInput(inputText);
     }
     return (
         <>
