@@ -1,0 +1,27 @@
+.mainContainer {
+    display: flex;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/stone_background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    border-radius: 9px;
+}
+
+.input {
+    border-radius: 4px;
+    margin: 10px;
+    justify-content: end;
+}
+
+#password {
+    margin-left: 20px;
+}
