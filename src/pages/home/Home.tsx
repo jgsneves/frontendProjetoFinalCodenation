@@ -10,17 +10,17 @@ const Home = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
-    })
+    });
 
     const [loginHash, setLoginHash] = useState({
         token: ''
-    })
+    });
 
     const history = useHistory();
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const {name, value} = event.target;
-        setFormData({...formData, [name]:value})
+        setFormData({...formData, [name]:value});
     }
 
     function handleSubmit(event: FormEvent) {
@@ -34,9 +34,10 @@ const Home = () => {
         api.post('api-token-auth/', data).then(response => {
             const hash = response.data;
             setLoginHash(hash);
+            localStorage.setItem('@stone-report/hash', hash);
         });
 
-        if (loginHash) {
+        if (loginHash.token) {
             history.push('/reports');
         }
 
