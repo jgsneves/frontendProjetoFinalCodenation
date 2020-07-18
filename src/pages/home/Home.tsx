@@ -15,7 +15,7 @@ const Home = () => {
             <main className="mainContainer">
                 <form className="inputContainer">
                 <fieldset className="inputContainer">
-                    <label>
+                    <label className="label">
                         Usuário
                         <input 
                             type="text" 
@@ -26,7 +26,7 @@ const Home = () => {
                         />
                     </label>
 
-                    <label>
+                    <label className="label">
                         Senha
                         <input 
                             type="password" 

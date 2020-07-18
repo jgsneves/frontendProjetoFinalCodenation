@@ -14,31 +14,42 @@ const FooterComponent = () => {
                 <img src={logo} alt="Stone"/>
 
                 <div className="logoContainer">
-                    <img 
-                        src={facebook_logo} 
-                        alt="Logo_facebook" 
-                        className="logo"
-                    />
-                    <img 
-                        src={twitter_logo} 
-                        alt="Logo_twitter"
-                        className="logo" 
-                    />
-                    <img 
-                        src={instagram_logo} 
-                        alt="Logo_instagram"
-                        className="logo" 
-                    />
-                    <img 
-                        src={youtube_logo} 
-                        alt="Logo_youtube"
-                        className="logo"
-                    />
-                    <img 
-                        src={linkedin_logo} 
-                        alt="Logo_linkedin"
-                        className="logo"
-                    />
+                    <a href="https://www.facebook.com/stonepagamentos/">
+                        <img 
+                            src={facebook_logo} 
+                            alt="Logo_facebook" 
+                            className="logo"
+                        />
+                    </a>
+                    <a href="https://twitter.com/stonepagamentos">
+                        <img 
+                            src={twitter_logo} 
+                            alt="Logo_twitter"
+                            className="logo" 
+                        />
+                    </a>
+                    <a href="https://www.instagram.com/stone/">
+                        <img 
+                            src={instagram_logo} 
+                            alt="Logo_instagram"
+                            className="logo" 
+                        />
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCk4L4JykgoDkN8YeuxkNqIQ">
+                        <img 
+                            src={youtube_logo} 
+                            alt="Logo_youtube"
+                            className="logo"
+                        />
+                    </a>
+                    <a href="https://www.linkedin.com/company/stone-pagamentos/">
+                        <img 
+                            src={linkedin_logo} 
+                            alt="Logo_linkedin"
+                            className="logo"
+                        />
+                    </a>
+
                 </div>
             </div>
 

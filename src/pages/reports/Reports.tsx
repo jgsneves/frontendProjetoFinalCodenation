@@ -7,7 +7,9 @@ const Reports = () => {
     return (
         <>
             <HeaderComponent />
-            <h1>Reports</h1>
+            <span>
+                <h1>Reports</h1>
+            </span>
             <FooterComponent />
         </>
     );
