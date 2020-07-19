@@ -15,6 +15,12 @@
     align-items: center;
 }
 
+.hash {
+    margin-top: 35px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
 .link {
     margin: 10px;
     font-weight: 500;

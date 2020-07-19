@@ -17,6 +17,9 @@ const HeaderComponent = () => {
         <>
             <header className="headerContainer">
                 <img src={logo} alt="Stone"/>
+                {
+                    hash ? <p className="hash">Token do usuário: {hash}</p> : null
+                }
                 <div className="linksDiv">
                     {
                         hash ? 

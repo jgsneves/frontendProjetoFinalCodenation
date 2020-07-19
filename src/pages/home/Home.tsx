@@ -34,7 +34,7 @@ const Home = () => {
         api.post('api-token-auth/', data).then(response => {
             const hash = response.data;
             setLoginHash(hash);
-            localStorage.setItem('@stone-report/hash', hash);
+            localStorage.setItem('@stone-report/hash', hash.token);
         });
 
         if (loginHash.token) {

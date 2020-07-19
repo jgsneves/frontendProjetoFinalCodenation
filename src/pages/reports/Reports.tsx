@@ -1,10 +1,40 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, useEffect} from 'react';
 import './Reports.css';
 import HeaderComponent from './../../components/header/Header';
 import FooterComponent from './../../components/footer/Footer';
+import api from './../../service/api';
+
+interface APIReportsResponse {
+    count: number,
+    next: null | number,
+    preview: null | number,
+    results: [],
+}
+
+interface Report {
+    archived: boolean,
+    author: string,
+    coleted_by: number,
+    count_of_events: number,
+    created_at: string,
+    details: string,
+    id: number,
+    log: string,
+    title: string,
+    type_of: string,
+}
 
 const Reports = () => {
     const [searchInput, setSearchInput] = useState("");
+    const hash = localStorage.getItem('@stone-report/hash');
+    const [listOfReports, setListOfReports] = useState<Report[]>([])
+
+    useEffect(() => {
+        api.get<APIReportsResponse>('reports/', { headers: { Authorization: `Token ${hash}`}}).then(response => {
+            const list = response.data.results;
+            setListOfReports(list);
+        })
+    }, []);
 
     function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
         const inputText = event.target.value;
@@ -25,52 +55,21 @@ const Reports = () => {
                     onChange={handleOnChange}
                     className="input"
                 />
-
-                <span className="reportContainer">
-                    <div className="top">
-                        <h3 className="username">User name</h3>
-                        <p className="datetime">12/12/12 00:00</p>
-                        <p className="type_of">WARNING</p>
-                        <p className="count_event">Count of events: 100</p>
-                    </div>
-
-                    <strong className="title">Report Title</strong>
-
-                    <p className="details">Possession her thoroughly remarkably terminated 
-                        man continuing. Removed greater to do ability. 
-                        You shy shall while but wrote marry. Call why 
-                        sake has sing pure. Gay six set polite nature 
-                        worthy. So matter be me we wisdom should basket
-                        moment merely. Me burst ample wrong which would
-                        mr he could. Visit arise my point timed drawn no. 
-                        Can friendly laughter goodness man him appetite 
-                        carriage. Any widen see gay forth alone fruit 
-                        bed. 
-                    </p>
-                </span>
-
-                <span className="reportContainer">
-                    <div className="top">
-                        <h3 className="username">User name</h3>
-                        <p className="datetime">12/12/12 00:00</p>
-                        <p className="type_of">WARNING</p>
-                        <p className="count_event">Count of events: 100</p>
-                    </div>
-
-                    <strong className="title">Report Title</strong>
-
-                    <p className="details">Possession her thoroughly remarkably terminated 
-                        man continuing. Removed greater to do ability. 
-                        You shy shall while but wrote marry. Call why 
-                        sake has sing pure. Gay six set polite nature 
-                        worthy. So matter be me we wisdom should basket
-                        moment merely. Me burst ample wrong which would
-                        mr he could. Visit arise my point timed drawn no. 
-                        Can friendly laughter goodness man him appetite 
-                        carriage. Any widen see gay forth alone fruit 
-                        bed. 
-                    </p>
-                </span>
+                {listOfReports.map(report => (
+                    <span className="reportContainer" key={report.id}>
+            
+                        <div className="top">
+                            <h3 className="username">{report.author}</h3>
+                            <p className="datetime">{report.created_at}</p>
+                            <p className="type_of">{report.type_of}</p>
+                            <p className="count_event">Count of events: {report.count_of_events}</p>
+                        </div>
+    
+                        <strong className="title">{report.title}</strong>
+    
+                        <p className="details">{report.details}</p>
+                    </span>                    
+                ))}
             </main>
             
             <FooterComponent />
